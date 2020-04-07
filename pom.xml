@@ -9,7 +9,8 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <java.source>1.8</java.source>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
         <lobmok.version>1.18.12</lobmok.version>
         <slf4j.version>1.7.30</slf4j.version>
         <junit.version>3.8.1</junit.version>
