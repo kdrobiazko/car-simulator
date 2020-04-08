@@ -8,7 +8,7 @@ public interface Brake {
 
   void release();
 
-  void setState(BrakeState state);
+  void changeState(BrakeState state);
 
   State getState();
 

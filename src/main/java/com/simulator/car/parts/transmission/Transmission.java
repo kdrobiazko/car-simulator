@@ -10,7 +10,7 @@ public interface Transmission {
 
   void reverse();
 
-  void setState(TransmissionState state);
+  void changeState(TransmissionState newState);
 
   State getState();
 

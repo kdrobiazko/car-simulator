@@ -14,13 +14,13 @@ public class ReverseState implements TransmissionState {
   @Override
   public void drive() {
     log.info("Transmission is set to Drive");
-    transmission.setState(new DriveState(transmission));
+    transmission.changeState(new DriveState(transmission));
   }
 
   @Override
   public void park() {
     log.info("Transmission is set to Park");
-    transmission.setState(new ParkState(transmission));
+    transmission.changeState(new ParkState(transmission));
   }
 
   @Override

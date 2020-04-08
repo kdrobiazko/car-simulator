@@ -43,9 +43,9 @@ public class SUV implements CarAPI, Car {
   }
 
   @Override
-  public void setState(CarState carState) {
-    log.debug("Car state is changed from {} to {}", this.carState.getState(), carState.getState());
-    this.carState = carState;
+  public void changeState(CarState newState) {
+    log.debug("State is changed from {} to {}", this.carState.getState(), newState.getState());
+    this.carState = newState;
   }
 
   @Override

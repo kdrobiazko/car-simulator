@@ -7,7 +7,7 @@ public interface Accelerator {
 
   void release();
 
-  void setState(AcceleratorState state);
+  void changeState(AcceleratorState newState);
 
   State getState();
 

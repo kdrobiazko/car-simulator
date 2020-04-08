@@ -24,8 +24,8 @@ public class DoorsImpl implements Doors {
   }
 
   @Override
-  public void setState(DoorState newState) {
-    log.debug("State set from {} to {}", this.state.getState(), newState.getState());
+  public void changeState(DoorState newState) {
+    log.debug("State is changed from {} to {}", this.state.getState(), newState.getState());
     this.state = newState;
   }
 

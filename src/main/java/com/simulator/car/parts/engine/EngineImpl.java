@@ -23,8 +23,8 @@ public class EngineImpl implements Engine {
     state.stop();
   }
 
-  public void setState(EngineState newState) {
-    log.debug("State set from {} to {}", this.state.getState(), newState.getState());
+  public void changeState(EngineState newState) {
+    log.debug("State is changed from {} to {}", this.state.getState(), newState.getState());
     this.state = newState;
   }
 

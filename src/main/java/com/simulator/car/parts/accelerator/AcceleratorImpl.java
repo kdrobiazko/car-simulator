@@ -24,8 +24,8 @@ public class AcceleratorImpl implements Accelerator {
   }
 
   @Override
-  public void setState(AcceleratorState newState) {
-    log.debug("State set from {} to {}", this.state.getState(), newState.getState());
+  public void changeState(AcceleratorState newState) {
+    log.debug("State is changed from {} to {}", this.state.getState(), newState.getState());
     this.state = newState;
   }
 

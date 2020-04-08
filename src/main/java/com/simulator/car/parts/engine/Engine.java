@@ -7,7 +7,7 @@ public interface Engine {
 
   void stop();
 
-  void setState(EngineState engineState);
+  void changeState(EngineState newState);
 
   EngineState.State getState();
 }

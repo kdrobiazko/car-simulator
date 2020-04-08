@@ -20,7 +20,7 @@ public class PressedState implements BrakeState {
   @Override
   public void release() {
     log.info("Brake released");
-    brake.setState(new ReleasedState(brake));
+    brake.changeState(new ReleasedState(brake));
   }
 
   @Override

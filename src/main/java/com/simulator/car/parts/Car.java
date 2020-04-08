@@ -19,5 +19,5 @@ public interface Car {
 
   Brake getBrake();
 
-  void setState(CarState state);
+  void changeState(CarState newState);
 }

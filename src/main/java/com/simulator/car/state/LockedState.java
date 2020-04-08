@@ -13,7 +13,7 @@ public class LockedState extends CarState {
   @Override
   public void unlockDoor() {
     car.getDoors().unlock();
-    car.setState(new UnlockedState(car));
+    car.changeState(new UnlockedState(car));
   }
 
   @Override

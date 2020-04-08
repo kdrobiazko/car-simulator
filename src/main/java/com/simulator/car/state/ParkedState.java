@@ -12,7 +12,7 @@ public class ParkedState extends CarState {
   @Override
   public void stopEngine() {
     car.getEngine().stop();
-    car.setState(new UnlockedState(car));
+    car.changeState(new UnlockedState(car));
   }
 
   @Override
@@ -23,13 +23,13 @@ public class ParkedState extends CarState {
   @Override
   public void setDrive() {
     car.getTransmission().drive();
-    car.setState(new StoppedState(car));
+    car.changeState(new StoppedState(car));
   }
 
   @Override
   public void setReverse() {
     car.getTransmission().reverse();
-    car.setState(new StoppedState(car));
+    car.changeState(new StoppedState(car));
   }
 
   @Override

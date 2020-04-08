@@ -23,8 +23,8 @@ public class BrakeImpl implements Brake {
   }
 
   @Override
-  public void setState(BrakeState newState) {
-    log.debug("State set from {} to {}", state.getState(), newState.getState());
+  public void changeState(BrakeState newState) {
+    log.debug("State is changed from {} to {}", state.getState(), newState.getState());
     this.state = newState;
   }
 

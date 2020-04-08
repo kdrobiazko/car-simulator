@@ -23,7 +23,7 @@ public class DriveReverseState extends CarState {
   @Override
   public void pressBrake() {
     car.getBrake().press();
-    car.setState(new StoppedState(car));
+    car.changeState(new StoppedState(car));
   }
 
   /* @Override

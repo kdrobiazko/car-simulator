@@ -8,7 +8,7 @@ public interface Doors {
 
   void unlock();
 
-  void setState(DoorState state);
+  void changeState(DoorState state);
 
   State getState();
 

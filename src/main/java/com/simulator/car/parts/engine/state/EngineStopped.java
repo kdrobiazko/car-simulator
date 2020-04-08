@@ -14,7 +14,7 @@ public class EngineStopped implements EngineState {
 
   public void start() {
     log.info("Engine started");
-    engine.setState(new EngineStarted());
+    engine.changeState(new EngineStarted());
   }
 
   public void stop() {

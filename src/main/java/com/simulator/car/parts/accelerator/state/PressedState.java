@@ -20,7 +20,7 @@ public class PressedState implements AcceleratorState {
   @Override
   public void release() {
     log.info("Accelerator released");
-    accelerator.setState(new ReleasedState(accelerator));
+    accelerator.changeState(new ReleasedState(accelerator));
   }
 
   @Override

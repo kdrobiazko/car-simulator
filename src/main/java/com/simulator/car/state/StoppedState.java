@@ -18,7 +18,7 @@ public class StoppedState extends CarState {
   @Override
   public void setParking() {
     car.getTransmission().park();
-    car.setState(new ParkedState(car));
+    car.changeState(new ParkedState(car));
   }
 
   @Override
@@ -44,10 +44,10 @@ public class StoppedState extends CarState {
     Transmission.State transmissionState = car.getTransmission().getState();
     switch (transmissionState) {
       case DRIVE:
-        car.setState(new DriveForwardState(car));
+        car.changeState(new DriveForwardState(car));
         break;
       case REVERSE:;
-        car.setState(new DriveReverseState(car));
+        car.changeState(new DriveReverseState(car));
         break;
       default:
         log.warn("Unexpected transmission state: {}", transmissionState);

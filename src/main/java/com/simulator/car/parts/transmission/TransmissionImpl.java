@@ -28,10 +28,9 @@ public class TransmissionImpl implements Transmission {
   }
 
   @Override
-  public void setState(TransmissionState state) {
-    log.debug(
-        "Transmission state changed from {} to {}", transmissionState.getState(), state.getState());
-    this.transmissionState = state;
+  public void changeState(TransmissionState newState) {
+    log.debug("State is changed from {} to {}", transmissionState.getState(), newState.getState());
+    this.transmissionState = newState;
   }
 
   @Override
