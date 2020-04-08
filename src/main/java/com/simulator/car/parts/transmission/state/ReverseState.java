@@ -27,4 +27,9 @@ public class ReverseState implements TransmissionState {
   public void reverse() {
     log.warn("Already in reverse state");
   }
+
+  @Override
+  public Transmission.State getState() {
+    return Transmission.State.REVERSE;
+  }
 }

@@ -27,4 +27,9 @@ public class DriveState implements TransmissionState {
     log.info("Set transmission in reverse state");
     transmission.setState(new ReverseState(transmission));
   }
+
+  @Override
+  public Transmission.State getState() {
+    return Transmission.State.DRIVE;
+  }
 }

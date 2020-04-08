@@ -24,4 +24,9 @@ public class BrakeImpl implements Brake {
   public void setState(BrakeState brakeState) {
     this.brakeState = brakeState;
   }
+
+  @Override
+  public State getState() {
+    return brakeState.getState();
+  }
 }

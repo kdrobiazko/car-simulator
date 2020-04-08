@@ -21,4 +21,9 @@ public class ReleasedState implements BrakeState {
   public void release() {
     log.warn("Brake already released");
   }
+
+  @Override
+  public Brake.State getState() {
+    return Brake.State.RELEASED;
+  }
 }

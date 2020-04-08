@@ -25,4 +25,9 @@ public class AcceleratorImpl implements Accelerator {
   public void setState(AcceleratorState acceleratorState) {
     this.acceleratorState = acceleratorState;
   }
+
+  @Override
+  public State getState() {
+    return acceleratorState.getState();
+  }
 }

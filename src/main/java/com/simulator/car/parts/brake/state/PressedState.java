@@ -22,4 +22,9 @@ public class PressedState implements BrakeState {
     log.info("Brake released");
     brake.setState(new ReleasedState(brake));
   }
+
+  @Override
+  public Brake.State getState() {
+    return Brake.State.PRESSED;
+  }
 }

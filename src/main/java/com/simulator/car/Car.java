@@ -1,9 +1,29 @@
 package com.simulator.car;
 
-public interface Car {
-  void openDoor();
+import com.simulator.car.parts.accelerator.Accelerator;
+import com.simulator.car.parts.brake.Brake;
+import com.simulator.car.parts.door.Doors;
+import com.simulator.car.parts.engine.Engine;
+import com.simulator.car.parts.transmission.Transmission;
+import com.simulator.car.state.CarState;
 
-  void closeDoor();
+public interface Car {
+
+  Engine getEngine();
+
+  Doors getDoors();
+
+  Transmission getTransmission();
+
+  Accelerator getAccelerator();
+
+  Brake getBrake();
+
+  void setState(CarState state);
+
+  void unlockDoor();
+
+  void lockDoor();
 
   void startEngine();
 

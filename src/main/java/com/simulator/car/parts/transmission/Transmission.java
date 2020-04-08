@@ -11,4 +11,12 @@ public interface Transmission {
   void reverse();
 
   void setState(TransmissionState state);
+
+  State getState();
+
+  enum State {
+    PARK,
+    DRIVE,
+    REVERSE
+  }
 }

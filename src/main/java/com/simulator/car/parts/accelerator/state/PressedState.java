@@ -22,4 +22,9 @@ public class PressedState implements AcceleratorState {
     log.info("Accelerator released");
     accelerator.setState(new ReleasedState(accelerator));
   }
+
+  @Override
+  public Accelerator.State getState() {
+    return Accelerator.State.PRESSED;
+  }
 }

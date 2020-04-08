@@ -8,4 +8,11 @@ public interface Accelerator {
   void release();
 
   void setState(AcceleratorState state);
+
+  State getState();
+
+  enum State {
+    PRESSED,
+    RELEASED
+  }
 }

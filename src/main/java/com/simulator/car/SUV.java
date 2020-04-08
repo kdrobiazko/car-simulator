@@ -4,94 +4,115 @@ import com.simulator.car.parts.accelerator.Accelerator;
 import com.simulator.car.parts.accelerator.AcceleratorImpl;
 import com.simulator.car.parts.brake.Brake;
 import com.simulator.car.parts.brake.BrakeImpl;
+import com.simulator.car.parts.door.Doors;
+import com.simulator.car.parts.door.DoorsImpl;
 import com.simulator.car.parts.engine.Engine;
 import com.simulator.car.parts.engine.EngineImpl;
 import com.simulator.car.parts.swheel.SteeringWheel;
 import com.simulator.car.parts.swheel.SteeringWheelImpl;
 import com.simulator.car.parts.transmission.Transmission;
 import com.simulator.car.parts.transmission.TransmissionImpl;
+import com.simulator.car.state.CarState;
+import com.simulator.car.state.LockedState;
+import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class SUV implements Car {
-  private final Engine engine;
-  private final SteeringWheel steeringWheel;
-  private final Accelerator accelerator;
-  private final Brake brake;
-  private final Transmission transmission;
+
+  @Getter private final Doors doors;
+  @Getter private final Engine engine;
+  @Getter private final SteeringWheel steeringWheel;
+  @Getter private final Accelerator accelerator;
+  @Getter private final Brake brake;
+  @Getter private final Transmission transmission;
+
+  private CarState carState;
 
   public SUV() {
+    doors = new DoorsImpl();
     engine = new EngineImpl();
     steeringWheel = new SteeringWheelImpl();
     accelerator = new AcceleratorImpl();
     brake = new BrakeImpl();
     transmission = new TransmissionImpl();
+
+    carState = new LockedState(this);
     log.info("SUV created");
   }
 
   @Override
+  public void setState(CarState carState) {
+    this.carState = carState;
+  }
+
+  @Override
   public void startEngine() {
-    engine.start();
+    carState.startEngine();
   }
 
   @Override
   public void stopEngine() {
-    engine.stop();
+    carState.stopEngine();
   }
 
   @Override
   public void turnSteeringWheelLeft() {
-    steeringWheel.left();
+    carState.turnSteeringWheelLeft();
   }
 
   @Override
   public void turnSteeringWheelRight() {
-    steeringWheel.right();
+    carState.turnSteeringWheelRight();
   }
 
   @Override
   public void turnSteeringWheelStraight() {
-    steeringWheel.straight();
+    carState.turnSteeringWheelStraight();
   }
 
   @Override
-  public void openDoor() {}
+  public void unlockDoor() {
+    carState.unlockDoor();
+  }
 
   @Override
-  public void closeDoor() {}
+  public void lockDoor() {
+    carState.lockDoor();
+  }
 
   @Override
   public void pressAccelerator() {
-    accelerator.press();
+    carState.pressAccelerator();
   }
 
   @Override
   public void releaseAccelerator() {
-    accelerator.release();
+    carState.releaseAccelerator();
   }
 
   @Override
   public void pressBrake() {
-    brake.press();
+    carState.pressBrake();
   }
 
   @Override
   public void releaseBrake() {
-    brake.release();
+    carState.releaseBrake();
   }
 
   @Override
   public void setDrive() {
-    transmission.drive();
+    carState.setDrive();
   }
 
   @Override
   public void setParking() {
-    transmission.park();
+    carState.setParking();
   }
 
   @Override
   public void setReverse() {
-    transmission.reverse();
+    carState.setReverse();
   }
 }

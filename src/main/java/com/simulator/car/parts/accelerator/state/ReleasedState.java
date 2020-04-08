@@ -21,4 +21,9 @@ public class ReleasedState implements AcceleratorState {
   public void release() {
     log.warn("Accelerator already released");
   }
+
+  @Override
+  public Accelerator.State getState() {
+    return Accelerator.State.RELEASED;
+  }
 }

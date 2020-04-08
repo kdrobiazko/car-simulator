@@ -29,4 +29,9 @@ public class TransmissionImpl implements Transmission {
   public void setState(TransmissionState state) {
     this.transmissionState = state;
   }
+
+  @Override
+  public State getState() {
+    return transmissionState.getState();
+  }
 }

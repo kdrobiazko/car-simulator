@@ -9,4 +9,11 @@ public interface Brake {
   void release();
 
   void setState(BrakeState state);
+
+  State getState();
+
+  enum State {
+    PRESSED,
+    RELEASED
+  }
 }
