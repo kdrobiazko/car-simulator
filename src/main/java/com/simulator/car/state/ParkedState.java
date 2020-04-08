@@ -1,6 +1,6 @@
 package com.simulator.car.state;
 
-import com.simulator.car.Car;
+import com.simulator.car.parts.Car;
 
 public class ParkedState extends CarState {
   private final Car car;
@@ -30,5 +30,10 @@ public class ParkedState extends CarState {
   public void setReverse() {
     car.getTransmission().reverse();
     car.setState(new StoppedState(car));
+  }
+
+  @Override
+  public State getState() {
+    return State.PARKED;
   }
 }

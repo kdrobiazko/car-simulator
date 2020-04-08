@@ -2,32 +2,35 @@ package com.simulator.car.parts.accelerator;
 
 import com.simulator.car.parts.accelerator.state.AcceleratorState;
 import com.simulator.car.parts.accelerator.state.ReleasedState;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class AcceleratorImpl implements Accelerator {
 
-  private AcceleratorState acceleratorState;
+  private AcceleratorState state;
 
   public AcceleratorImpl() {
-    acceleratorState = new ReleasedState(this);
+    state = new ReleasedState(this);
   }
 
   @Override
   public void press() {
-    acceleratorState.press();
+    state.press();
   }
 
   @Override
   public void release() {
-    acceleratorState.release();
+    state.release();
   }
 
   @Override
-  public void setState(AcceleratorState acceleratorState) {
-    this.acceleratorState = acceleratorState;
+  public void setState(AcceleratorState newState) {
+    log.debug("State set from {} to {}", this.state.getState(), newState.getState());
+    this.state = newState;
   }
 
   @Override
   public State getState() {
-    return acceleratorState.getState();
+    return state.getState();
   }
 }

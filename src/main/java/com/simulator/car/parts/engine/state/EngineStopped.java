@@ -14,10 +14,15 @@ public class EngineStopped implements EngineState {
 
   public void start() {
     log.info("Engine started");
-    engine.setEngineState(new EngineStarted());
+    engine.setState(new EngineStarted());
   }
 
   public void stop() {
     log.warn("Engine already stopped");
+  }
+
+  @Override
+  public State getState() {
+    return State.STOPPED;
   }
 }

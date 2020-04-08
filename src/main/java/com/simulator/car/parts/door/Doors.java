@@ -9,4 +9,11 @@ public interface Doors {
   void unlock();
 
   void setState(DoorState state);
+
+  State getState();
+
+  enum State {
+    LOCKED,
+    UNLOCKED
+  }
 }

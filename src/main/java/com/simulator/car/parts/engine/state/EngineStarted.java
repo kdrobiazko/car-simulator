@@ -11,4 +11,9 @@ public class EngineStarted implements EngineState {
   public void stop() {
     log.info("Engine stopped");
   }
+
+  @Override
+  public State getState() {
+    return State.STARTED;
+  }
 }

@@ -1,6 +1,6 @@
 package com.simulator.car.state;
 
-import com.simulator.car.Car;
+import com.simulator.car.parts.Car;
 
 public class DriveReverseState extends CarState {
 
@@ -26,8 +26,13 @@ public class DriveReverseState extends CarState {
     car.setState(new StoppedState(car));
   }
 
- /* @Override
+  /* @Override
   public void releaseBrake() {
     car.getBrake().release();
   }*/
+
+  @Override
+  public State getState() {
+    return State.DRIVE_REVERSE;
+  }
 }

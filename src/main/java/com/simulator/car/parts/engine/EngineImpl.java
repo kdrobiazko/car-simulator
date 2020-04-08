@@ -2,26 +2,34 @@ package com.simulator.car.parts.engine;
 
 import com.simulator.car.parts.engine.state.EngineState;
 import com.simulator.car.parts.engine.state.EngineStopped;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class EngineImpl implements Engine {
 
-  private EngineState engineState;
+  private EngineState state;
 
   public EngineImpl() {
-    engineState = new EngineStopped(this);
+    state = new EngineStopped(this);
   }
 
   @Override
   public void start() {
-    engineState.start();
+    state.start();
   }
 
   @Override
   public void stop() {
-    engineState.stop();
+    state.stop();
   }
 
-  public void setEngineState(EngineState engineState) {
-    this.engineState = engineState;
+  public void setState(EngineState newState) {
+    log.debug("State set from {} to {}", this.state.getState(), newState.getState());
+    this.state = newState;
+  }
+
+  @Override
+  public EngineState.State getState() {
+    return state.getState();
   }
 }

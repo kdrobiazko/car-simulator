@@ -13,12 +13,17 @@ public class UnlockedState implements DoorState {
 
   @Override
   public void lock() {
-    log.info("Lock doors");
+    log.info("Doors locked");
     doors.setState(new LockedState(doors));
   };
 
   @Override
   public void unlock() {
     log.warn("Doors already unlocked");
+  }
+
+  @Override
+  public Doors.State getState() {
+    return Doors.State.UNLOCKED;
   }
 }

@@ -1,5 +1,6 @@
 package com.simulator.car;
 
+import com.simulator.car.parts.Car;
 import com.simulator.car.parts.accelerator.Accelerator;
 import com.simulator.car.parts.accelerator.AcceleratorImpl;
 import com.simulator.car.parts.brake.Brake;
@@ -18,7 +19,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SUV implements Car {
+public class SUV implements CarAPI, Car {
 
   @Getter private final Doors doors;
   @Getter private final Engine engine;
@@ -43,6 +44,7 @@ public class SUV implements Car {
 
   @Override
   public void setState(CarState carState) {
+    log.debug("Car state is changed from {} to {}", this.carState.getState(), carState.getState());
     this.carState = carState;
   }
 

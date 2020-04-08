@@ -1,6 +1,6 @@
 package com.simulator.car.state;
 
-import com.simulator.car.Car;
+import com.simulator.car.parts.Car;
 
 public class LockedState extends CarState {
 
@@ -19,5 +19,10 @@ public class LockedState extends CarState {
   @Override
   public void lockDoor() {
     car.getDoors().lock();
+  }
+
+  @Override
+  public State getState() {
+    return State.LOCKED;
   }
 }

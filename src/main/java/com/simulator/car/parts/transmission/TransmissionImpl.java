@@ -2,7 +2,9 @@ package com.simulator.car.parts.transmission;
 
 import com.simulator.car.parts.transmission.state.ParkState;
 import com.simulator.car.parts.transmission.state.TransmissionState;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class TransmissionImpl implements Transmission {
   private TransmissionState transmissionState;
 
@@ -27,6 +29,8 @@ public class TransmissionImpl implements Transmission {
 
   @Override
   public void setState(TransmissionState state) {
+    log.debug(
+        "Transmission state changed from {} to {}", transmissionState.getState(), state.getState());
     this.transmissionState = state;
   }
 

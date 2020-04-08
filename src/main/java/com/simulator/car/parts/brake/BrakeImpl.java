@@ -2,31 +2,34 @@ package com.simulator.car.parts.brake;
 
 import com.simulator.car.parts.brake.state.BrakeState;
 import com.simulator.car.parts.brake.state.ReleasedState;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class BrakeImpl implements Brake {
-  private BrakeState brakeState;
+  private BrakeState state;
 
   public BrakeImpl() {
-    brakeState = new ReleasedState(this);
+    state = new ReleasedState(this);
   }
 
   @Override
   public void press() {
-    brakeState.press();
+    state.press();
   }
 
   @Override
   public void release() {
-    brakeState.release();
+    state.release();
   }
 
   @Override
-  public void setState(BrakeState brakeState) {
-    this.brakeState = brakeState;
+  public void setState(BrakeState newState) {
+    log.debug("State set from {} to {}", state.getState(), newState.getState());
+    this.state = newState;
   }
 
   @Override
   public State getState() {
-    return brakeState.getState();
+    return state.getState();
   }
 }

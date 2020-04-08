@@ -1,6 +1,6 @@
 package com.simulator.car.state;
 
-import com.simulator.car.Car;
+import com.simulator.car.parts.Car;
 import com.simulator.car.parts.transmission.Transmission;
 import lombok.extern.slf4j.Slf4j;
 
@@ -57,5 +57,10 @@ public class StoppedState extends CarState {
   @Override
   public void releaseAccelerator() {
     car.getAccelerator().release();
+  }
+
+  @Override
+  public State getState() {
+    return State.STOPPED;
   }
 }
