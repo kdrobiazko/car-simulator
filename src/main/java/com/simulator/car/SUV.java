@@ -42,6 +42,23 @@ public class SUV implements CarAPI, CarControls {
     log.info("SUV created");
   }
 
+  public SUV(
+      CarState carState,
+      Doors doors,
+      Engine engine,
+      SteeringWheel steeringWheel,
+      Accelerator accelerator,
+      Brake brake,
+      Transmission transmission) {
+    this.carState = carState;
+    this.doors = doors;
+    this.engine = engine;
+    this.steeringWheel = steeringWheel;
+    this.accelerator = accelerator;
+    this.brake = brake;
+    this.transmission = transmission;
+  }
+
   @Override
   public void changeState(CarState newState) {
     log.debug("State is changed from {} to {}", this.carState.getState(), newState.getState());
