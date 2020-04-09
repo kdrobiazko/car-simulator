@@ -27,7 +27,7 @@ ___
 |Locked|Unlocked|	Door: unlock|				
 |Unlocked|Locked|Door: lock|				
 |Locked|Parked|Engine: start|			
-|Parked	Locked|Engine: stop|			
+|Parked|Locked|Engine: stop|			
 |Parked|Forward Moving|Engine: started, brake: pressed, accelerator: released|
 |Forward Moving|Parked|Engine: started, brake: pressed, accelerator: released|
 |Parked|Reverse Moving|Engine: started, brake: pressed, accelerator: released|
