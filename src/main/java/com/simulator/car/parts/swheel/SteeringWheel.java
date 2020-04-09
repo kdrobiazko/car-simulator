@@ -9,5 +9,13 @@ public interface SteeringWheel {
 
   void straight();
 
-  void setState(SteeringWheelState state);
+  void changeState(SteeringWheelState state);
+
+  State getState();
+
+  enum State {
+    LEFT,
+    RIGHT,
+    STRAIGHT
+  }
 }

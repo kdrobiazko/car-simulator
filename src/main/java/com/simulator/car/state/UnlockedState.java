@@ -4,27 +4,25 @@ import com.simulator.car.parts.Car;
 
 public class UnlockedState extends CarState {
 
-  private final Car car;
-
   public UnlockedState(Car car) {
-    this.car = car;
+    super(car);
   }
 
   @Override
   public void startEngine() {
-    car.getEngine().start();
-    car.changeState(new ParkedState(car));
+    getCar().getEngine().start();
+    getCar().changeState(new ParkedState(getCar()));
   }
 
   @Override
   public void unlockDoor() {
-    car.getDoors().unlock();
+    getCar().getDoors().unlock();
   }
 
   @Override
   public void lockDoor() {
-    car.getDoors().lock();
-    car.changeState(new LockedState(car));
+    getCar().getDoors().lock();
+    getCar().changeState(new LockedState(getCar()));
   }
 
   @Override

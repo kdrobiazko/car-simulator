@@ -12,8 +12,8 @@ public class DriveForwardState extends DriveState {
 
   @Override
   public void pressAccelerator() {
-    super.pressAccelerator();
     log.info("Car goes forward");
+    super.pressAccelerator();
   }
 
   @Override

@@ -1,7 +1,7 @@
 package com.simulator.car.parts.engine;
 
 import com.simulator.car.parts.engine.state.EngineState;
-import com.simulator.car.parts.engine.state.EngineStopped;
+import com.simulator.car.parts.engine.state.EngineStoppedState;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
@@ -10,7 +10,7 @@ public class EngineImpl implements Engine {
   private EngineState state;
 
   public EngineImpl() {
-    state = new EngineStopped(this);
+    state = new EngineStoppedState(this);
   }
 
   @Override

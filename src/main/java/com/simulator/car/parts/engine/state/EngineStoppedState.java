@@ -4,17 +4,17 @@ import com.simulator.car.parts.engine.Engine;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class EngineStopped implements EngineState {
+public class EngineStoppedState implements EngineState {
 
-  private Engine engine;
+  private final Engine engine;
 
-  public EngineStopped(Engine engine) {
+  public EngineStoppedState(Engine engine) {
     this.engine = engine;
   }
 
   public void start() {
+    engine.changeState(new EngineStartedState(engine));
     log.info("Engine started");
-    engine.changeState(new EngineStarted());
   }
 
   public void stop() {

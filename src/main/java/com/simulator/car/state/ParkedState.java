@@ -3,73 +3,55 @@ package com.simulator.car.state;
 import com.simulator.car.parts.Car;
 
 public class ParkedState extends CarState {
-  private final Car car;
 
   public ParkedState(Car car) {
-    this.car = car;
+    super(car);
   }
 
   @Override
   public void stopEngine() {
-    car.getEngine().stop();
-    car.changeState(new UnlockedState(car));
+    getCar().getEngine().stop();
+    getCar().changeState(new UnlockedState(getCar()));
   }
 
   @Override
   public void startEngine() {
-    car.getEngine().start();
-  }
-
-  @Override
-  public void setDrive() {
-    car.getTransmission().drive();
-    car.changeState(new DriveForwardState(car));
-  }
-
-  @Override
-  public void setReverse() {
-    car.getTransmission().reverse();
-    car.changeState(new DriveReverseState(car));
-  }
-
-  @Override
-  public void setParking() {
-    car.getTransmission().park();
+    getCar().getEngine().start();
   }
 
   @Override
   public void releaseBrake() {
-    car.getBrake().release();
+    getCar().getBrake().release();
   }
 
   @Override
   public void pressBrake() {
-    car.getBrake().press();
+    getCar().getBrake().press();
   }
 
   @Override
   public void pressAccelerator() {
-    car.getAccelerator().press();
+    getCar().getAccelerator().press();
   }
 
   @Override
   public void releaseAccelerator() {
-    car.getAccelerator().release();
+    getCar().getAccelerator().release();
   }
 
   @Override
   public void turnSteeringWheelLeft() {
-    car.getSteeringWheel().left();
+    getCar().getSteeringWheel().left();
   }
 
   @Override
   public void turnSteeringWheelRight() {
-    car.getSteeringWheel().right();
+    getCar().getSteeringWheel().right();
   }
 
   @Override
   public void turnSteeringWheelStraight() {
-    car.getSteeringWheel().straight();
+    getCar().getSteeringWheel().straight();
   }
 
   @Override

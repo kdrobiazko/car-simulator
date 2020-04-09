@@ -7,13 +7,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class App {
   public static void main(String[] args) {
-    log.info("Hello World!");
     CarAPI car = new SUV();
     car.unlockDoor();
     car.startEngine();
     car.setDrive();
     car.pressAccelerator();
+    car.turnSteeringWheelLeft();
     car.releaseAccelerator();
+    car.turnSteeringWheelStraight();
     car.pressBrake();
     car.setParking();
     car.releaseBrake();

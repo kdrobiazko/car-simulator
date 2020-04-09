@@ -14,18 +14,23 @@ public class TurnedLeftState implements SteeringWheelState {
 
   @Override
   public void right() {
-    log.info("Wheal turned right");
-    steeringWheel.setState(new TurnedRightState(steeringWheel));
+    steeringWheel.changeState(new TurnedRightState(steeringWheel));
+    log.info("Turned steering wheel right");
   }
 
   @Override
   public void left() {
-    log.warn("Wheal already turned left");
+    log.warn("Steering wheal already turned left");
   }
 
   @Override
   public void straight() {
-    log.info("Wheal set to straight state");
-    steeringWheel.setState(new StraightState(steeringWheel));
+    steeringWheel.changeState(new StraightState(steeringWheel));
+    log.info("Turned steering wheal to straight state");
+  }
+
+  @Override
+  public SteeringWheel.State getState() {
+    return SteeringWheel.State.LEFT;
   }
 }

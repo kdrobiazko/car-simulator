@@ -1,28 +1,58 @@
 package com.simulator.car.state;
 
 import com.simulator.car.parts.Car;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class LockedState extends CarState {
 
-  private final Car car;
-
   public LockedState(Car car) {
-    this.car = car;
+    super(car);
   }
 
   @Override
   public void unlockDoor() {
-    car.getDoors().unlock();
-    car.changeState(new UnlockedState(car));
+    getCar().getDoors().unlock();
+    getCar().changeState(new UnlockedState(getCar()));
   }
 
   @Override
   public void lockDoor() {
-    car.getDoors().lock();
+    getCar().getDoors().lock();
   }
 
   @Override
   public State getState() {
     return State.LOCKED;
+  }
+
+  @Override
+  public void setDrive() {
+    log.error("Illegal operation for state: {}", getState());
+  }
+
+  @Override
+  public void setParking() {
+    log.error("Illegal operation for state: {}", getState());
+  }
+
+  @Override
+  public void setReverse() {
+    log.error("Illegal operation for state: {}", getState());
+  }
+
+  @Override
+  public void turnSteeringWheelLeft() {
+    log.error("Illegal operation for state: {}", getState());
+  }
+
+  @Override
+  public void turnSteeringWheelRight() {
+    log.error("Illegal operation for state: {}", getState());
+  }
+
+  @Override
+  public void turnSteeringWheelStraight() {
+    log.error("Illegal operation for state: {}", getState());
   }
 }

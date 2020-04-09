@@ -14,13 +14,13 @@ public class PressedState implements BrakeState {
 
   @Override
   public void press() {
-    log.warn("Brake already pressed");
+    log.warn("Brake is already pressed");
   }
 
   @Override
   public void release() {
-    log.info("Brake released");
     brake.changeState(new ReleasedState(brake));
+    log.info("Brake released");
   }
 
   @Override

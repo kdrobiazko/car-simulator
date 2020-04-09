@@ -12,8 +12,8 @@ public class DriveReverseState extends DriveState {
 
   @Override
   public void pressAccelerator() {
-    super.pressAccelerator();
     log.info("Car goes reverse");
+    super.pressAccelerator();
   }
 
   @Override

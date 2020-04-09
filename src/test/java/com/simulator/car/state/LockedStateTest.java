@@ -1,7 +1,13 @@
 package com.simulator.car.state;
 
 import com.simulator.car.parts.Car;
+import com.simulator.car.parts.accelerator.Accelerator;
+import com.simulator.car.parts.brake.Brake;
 import com.simulator.car.parts.door.Doors;
+import com.simulator.car.parts.engine.Engine;
+import com.simulator.car.parts.engine.state.EngineState;
+import com.simulator.car.parts.swheel.SteeringWheel;
+import com.simulator.car.parts.transmission.Transmission;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,15 +21,25 @@ import static org.mockito.Mockito.times;
 
 public class LockedStateTest {
 
+  @Mock private Accelerator accelerator;
+  @Mock private Brake brake;
   @Mock private Car car;
   @Mock private Doors doors;
+  @Mock private Engine engine;
+  @Mock private SteeringWheel steeringWheel;
+  @Mock private Transmission transmission;
 
   @InjectMocks private LockedState unit;
 
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
+    Mockito.when(car.getAccelerator()).thenReturn(accelerator);
+    Mockito.when(car.getBrake()).thenReturn(brake);
     Mockito.when(car.getDoors()).thenReturn(doors);
+    Mockito.when(car.getEngine()).thenReturn(engine);
+    Mockito.when(car.getSteeringWheel()).thenReturn(steeringWheel);
+    Mockito.when(car.getTransmission()).thenReturn(transmission);
   }
 
   @Test
@@ -35,6 +51,11 @@ public class LockedStateTest {
     Mockito.verifyNoMoreInteractions(car);
     Mockito.verify(doors, times(1)).unlock();
     Mockito.verifyNoMoreInteractions(doors);
+    Mockito.verifyZeroInteractions(accelerator);
+    Mockito.verifyZeroInteractions(brake);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test
@@ -42,6 +63,11 @@ public class LockedStateTest {
     unit.lockDoor();
     Mockito.verify(car, times(1)).getDoors();
     Mockito.verifyNoMoreInteractions(car);
+    Mockito.verifyZeroInteractions(accelerator);
+    Mockito.verifyZeroInteractions(brake);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test
@@ -52,25 +78,53 @@ public class LockedStateTest {
   @Test
   public void pressAccelerator() {
     unit.pressAccelerator();
-    verifyNoChanges();
+    Mockito.verify(car, times(1)).getAccelerator();
+    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(accelerator, times(1)).press();
+    Mockito.verifyNoMoreInteractions(accelerator);
+    Mockito.verifyZeroInteractions(brake);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test
   public void releaseAccelerator() {
     unit.releaseAccelerator();
-    verifyNoChanges();
+    Mockito.verify(car, times(1)).getAccelerator();
+    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(accelerator, times(1)).release();
+    Mockito.verifyNoMoreInteractions(accelerator);
+    Mockito.verifyZeroInteractions(brake);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test
   public void pressBrake() {
     unit.pressBrake();
-    verifyNoChanges();
+    Mockito.verify(car, times(1)).getBrake();
+    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(brake, times(1)).press();
+    Mockito.verifyNoMoreInteractions(brake);
+    Mockito.verifyZeroInteractions(accelerator);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test
   public void releaseBrake() {
     unit.releaseBrake();
-    verifyNoChanges();
+    Mockito.verify(car, times(1)).getBrake();
+    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(brake, times(1)).release();
+    Mockito.verifyNoMoreInteractions(brake);
+    Mockito.verifyZeroInteractions(accelerator);
+    Mockito.verifyZeroInteractions(engine);
+    Mockito.verifyZeroInteractions(transmission);
+    Mockito.verifyZeroInteractions(steeringWheel);
   }
 
   @Test

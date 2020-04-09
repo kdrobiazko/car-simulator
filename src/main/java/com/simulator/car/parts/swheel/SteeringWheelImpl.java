@@ -2,7 +2,9 @@ package com.simulator.car.parts.swheel;
 
 import com.simulator.car.parts.swheel.state.SteeringWheelState;
 import com.simulator.car.parts.swheel.state.StraightState;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 public class SteeringWheelImpl implements SteeringWheel {
 
   private SteeringWheelState state;
@@ -27,5 +29,13 @@ public class SteeringWheelImpl implements SteeringWheel {
   }
 
   @Override
-  public void setState(SteeringWheelState state) {}
+  public void changeState(SteeringWheelState newState) {
+    log.debug("State is changed from {} to {}", state, newState);
+    this.state = newState;
+  }
+
+  @Override
+  public State getState() {
+    return state.getState();
+  }
 }

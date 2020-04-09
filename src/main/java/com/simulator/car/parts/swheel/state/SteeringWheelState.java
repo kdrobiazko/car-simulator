@@ -1,5 +1,7 @@
 package com.simulator.car.parts.swheel.state;
 
+import com.simulator.car.parts.swheel.SteeringWheel;
+
 public interface SteeringWheelState {
 
   void right();
@@ -7,4 +9,6 @@ public interface SteeringWheelState {
   void left();
 
   void straight();
+
+  SteeringWheel.State getState();
 }
