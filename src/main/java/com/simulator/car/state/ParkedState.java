@@ -23,13 +23,23 @@ public class ParkedState extends CarState {
   @Override
   public void setDrive() {
     car.getTransmission().drive();
-    car.changeState(new StoppedState(car));
+    car.changeState(new DriveForwardState(car));
   }
 
   @Override
   public void setReverse() {
     car.getTransmission().reverse();
-    car.changeState(new StoppedState(car));
+    car.changeState(new DriveReverseState(car));
+  }
+
+  @Override
+  public void releaseBrake() {
+    car.getBrake().release();
+  }
+
+  @Override
+  public void pressBrake() {
+    car.getBrake().press();
   }
 
   @Override

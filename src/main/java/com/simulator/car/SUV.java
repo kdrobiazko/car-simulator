@@ -50,71 +50,85 @@ public class SUV implements CarAPI, Car {
 
   @Override
   public void startEngine() {
+    log.info("Start engine");
     carState.startEngine();
   }
 
   @Override
   public void stopEngine() {
+    log.info("Stop engine");
     carState.stopEngine();
   }
 
   @Override
   public void turnSteeringWheelLeft() {
+    log.info("Turn steering wheel left");
     carState.turnSteeringWheelLeft();
   }
 
   @Override
   public void turnSteeringWheelRight() {
+    log.info("Turn steering wheel right");
     carState.turnSteeringWheelRight();
   }
 
   @Override
   public void turnSteeringWheelStraight() {
+    log.info("Turn steering wheel straight");
     carState.turnSteeringWheelStraight();
   }
 
   @Override
   public void unlockDoor() {
+    log.info("Unlock door");
     carState.unlockDoor();
   }
 
   @Override
   public void lockDoor() {
+    log.info("Lock door");
     carState.lockDoor();
   }
 
   @Override
   public void pressAccelerator() {
+    log.info("Press accelerator");
     carState.pressAccelerator();
   }
 
   @Override
   public void releaseAccelerator() {
+    log.info("Release accelerator");
     carState.releaseAccelerator();
   }
 
   @Override
   public void pressBrake() {
+    log.info("Press brake");
     carState.pressBrake();
   }
 
   @Override
   public void releaseBrake() {
+    log.info("Release brake");
     carState.releaseBrake();
   }
 
   @Override
   public void setDrive() {
+    log.info("Set transmission to Drive");
     carState.setDrive();
   }
 
   @Override
   public void setParking() {
+    log.info("Set transmission to Parking");
     carState.setParking();
   }
 
   @Override
   public void setReverse() {
+    log.info("Set transmission to Reverse");
     carState.setReverse();
   }
 }
