@@ -1,35 +1,20 @@
 package com.simulator.car.state;
 
 import com.simulator.car.parts.Car;
+import lombok.extern.slf4j.Slf4j;
 
-public class DriveForwardState extends CarState {
-
-  private final Car car;
+@Slf4j
+public class DriveForwardState extends DriveState {
 
   public DriveForwardState(Car car) {
-    this.car = car;
+    super(car);
   }
 
   @Override
   public void pressAccelerator() {
-    car.getAccelerator().press();
+    super.pressAccelerator();
+    log.info("Car goes forward");
   }
-
-  @Override
-  public void releaseAccelerator() {
-    car.getAccelerator().release();
-  }
-
-  @Override
-  public void pressBrake() {
-    car.getBrake().press();
-    car.changeState(new StoppedState(car));
-  }
-
-  /* @Override
-  public void releaseBrake() {
-    car.getBrake().release();
-  }*/
 
   @Override
   public State getState() {
