@@ -33,6 +33,11 @@ public class ParkedState extends CarState {
   }
 
   @Override
+  public void setParking() {
+    car.getTransmission().park();
+  }
+
+  @Override
   public void releaseBrake() {
     car.getBrake().release();
   }
@@ -40,6 +45,31 @@ public class ParkedState extends CarState {
   @Override
   public void pressBrake() {
     car.getBrake().press();
+  }
+
+  @Override
+  public void pressAccelerator() {
+    car.getAccelerator().press();
+  }
+
+  @Override
+  public void releaseAccelerator() {
+    car.getAccelerator().release();
+  }
+
+  @Override
+  public void turnSteeringWheelLeft() {
+    car.getSteeringWheel().left();
+  }
+
+  @Override
+  public void turnSteeringWheelRight() {
+    car.getSteeringWheel().right();
+  }
+
+  @Override
+  public void turnSteeringWheelStraight() {
+    car.getSteeringWheel().straight();
   }
 
   @Override
