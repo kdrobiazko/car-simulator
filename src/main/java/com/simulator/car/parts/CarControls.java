@@ -8,7 +8,7 @@ import com.simulator.car.parts.swheel.SteeringWheel;
 import com.simulator.car.parts.transmission.Transmission;
 import com.simulator.car.state.CarState;
 
-public interface Car {
+public interface CarControls {
 
   Accelerator getAccelerator();
 

@@ -1,24 +1,24 @@
 package com.simulator.car.state;
 
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class LockedState extends CarState {
 
-  public LockedState(Car car) {
-    super(car);
+  public LockedState(CarControls carControls) {
+    super(carControls);
   }
 
   @Override
   public void unlockDoor() {
-    getCar().getDoors().unlock();
-    getCar().changeState(new UnlockedState(getCar()));
+    getCarControls().getDoors().unlock();
+    getCarControls().changeState(new UnlockedState(getCarControls()));
   }
 
   @Override
   public void lockDoor() {
-    getCar().getDoors().lock();
+    getCarControls().getDoors().lock();
   }
 
   @Override

@@ -4,10 +4,10 @@ import com.simulator.car.parts.door.Doors;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class LockedState implements DoorState {
+public class DoorsLockedState implements DoorsState {
   private final Doors doors;
 
-  public LockedState(Doors doors) {
+  public DoorsLockedState(Doors doors) {
     this.doors = doors;
   }
 
@@ -18,7 +18,7 @@ public class LockedState implements DoorState {
 
   @Override
   public void unlock() {
-    doors.changeState(new UnlockedState(doors));
+    doors.changeState(new DoorsUnlockedState(doors));
     log.info("Door is unlocked");
   }
 

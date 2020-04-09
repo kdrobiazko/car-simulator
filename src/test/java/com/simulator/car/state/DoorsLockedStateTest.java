@@ -1,11 +1,10 @@
 package com.simulator.car.state;
 
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 import com.simulator.car.parts.accelerator.Accelerator;
 import com.simulator.car.parts.brake.Brake;
 import com.simulator.car.parts.door.Doors;
 import com.simulator.car.parts.engine.Engine;
-import com.simulator.car.parts.engine.state.EngineState;
 import com.simulator.car.parts.swheel.SteeringWheel;
 import com.simulator.car.parts.transmission.Transmission;
 import org.junit.Assert;
@@ -19,11 +18,11 @@ import org.mockito.MockitoAnnotations;
 import static org.mockito.Matchers.isA;
 import static org.mockito.Mockito.times;
 
-public class LockedStateTest {
+public class DoorsLockedStateTest {
 
   @Mock private Accelerator accelerator;
   @Mock private Brake brake;
-  @Mock private Car car;
+  @Mock private CarControls carControls;
   @Mock private Doors doors;
   @Mock private Engine engine;
   @Mock private SteeringWheel steeringWheel;
@@ -34,21 +33,21 @@ public class LockedStateTest {
   @Before
   public void setUp() {
     MockitoAnnotations.initMocks(this);
-    Mockito.when(car.getAccelerator()).thenReturn(accelerator);
-    Mockito.when(car.getBrake()).thenReturn(brake);
-    Mockito.when(car.getDoors()).thenReturn(doors);
-    Mockito.when(car.getEngine()).thenReturn(engine);
-    Mockito.when(car.getSteeringWheel()).thenReturn(steeringWheel);
-    Mockito.when(car.getTransmission()).thenReturn(transmission);
+    Mockito.when(carControls.getAccelerator()).thenReturn(accelerator);
+    Mockito.when(carControls.getBrake()).thenReturn(brake);
+    Mockito.when(carControls.getDoors()).thenReturn(doors);
+    Mockito.when(carControls.getEngine()).thenReturn(engine);
+    Mockito.when(carControls.getSteeringWheel()).thenReturn(steeringWheel);
+    Mockito.when(carControls.getTransmission()).thenReturn(transmission);
   }
 
   @Test
   public void unlockDoor() {
     unit.unlockDoor();
 
-    Mockito.verify(car, times(1)).getDoors();
-    Mockito.verify(car, times(1)).changeState(isA(UnlockedState.class));
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getDoors();
+    Mockito.verify(carControls, times(1)).changeState(isA(UnlockedState.class));
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verify(doors, times(1)).unlock();
     Mockito.verifyNoMoreInteractions(doors);
     Mockito.verifyZeroInteractions(accelerator);
@@ -61,8 +60,8 @@ public class LockedStateTest {
   @Test
   public void lockDoor() {
     unit.lockDoor();
-    Mockito.verify(car, times(1)).getDoors();
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getDoors();
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verifyZeroInteractions(accelerator);
     Mockito.verifyZeroInteractions(brake);
     Mockito.verifyZeroInteractions(engine);
@@ -78,8 +77,8 @@ public class LockedStateTest {
   @Test
   public void pressAccelerator() {
     unit.pressAccelerator();
-    Mockito.verify(car, times(1)).getAccelerator();
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getAccelerator();
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verify(accelerator, times(1)).press();
     Mockito.verifyNoMoreInteractions(accelerator);
     Mockito.verifyZeroInteractions(brake);
@@ -91,8 +90,8 @@ public class LockedStateTest {
   @Test
   public void releaseAccelerator() {
     unit.releaseAccelerator();
-    Mockito.verify(car, times(1)).getAccelerator();
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getAccelerator();
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verify(accelerator, times(1)).release();
     Mockito.verifyNoMoreInteractions(accelerator);
     Mockito.verifyZeroInteractions(brake);
@@ -104,8 +103,8 @@ public class LockedStateTest {
   @Test
   public void pressBrake() {
     unit.pressBrake();
-    Mockito.verify(car, times(1)).getBrake();
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getBrake();
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verify(brake, times(1)).press();
     Mockito.verifyNoMoreInteractions(brake);
     Mockito.verifyZeroInteractions(accelerator);
@@ -117,8 +116,8 @@ public class LockedStateTest {
   @Test
   public void releaseBrake() {
     unit.releaseBrake();
-    Mockito.verify(car, times(1)).getBrake();
-    Mockito.verifyNoMoreInteractions(car);
+    Mockito.verify(carControls, times(1)).getBrake();
+    Mockito.verifyNoMoreInteractions(carControls);
     Mockito.verify(brake, times(1)).release();
     Mockito.verifyNoMoreInteractions(brake);
     Mockito.verifyZeroInteractions(accelerator);
@@ -176,7 +175,7 @@ public class LockedStateTest {
   }
 
   private void verifyNoChanges() {
-    Mockito.verifyZeroInteractions(car);
+    Mockito.verifyZeroInteractions(carControls);
     Mockito.verifyZeroInteractions(doors);
   }
 }

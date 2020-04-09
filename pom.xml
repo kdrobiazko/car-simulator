@@ -2,10 +2,10 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.simulator</groupId>
-    <artifactId>car-simulator</artifactId>
+    <artifactId>carControls-simulator</artifactId>
     <packaging>jar</packaging>
     <version>1.0-SNAPSHOT</version>
-    <name>car-simulator</name>
+    <name>carControls-simulator</name>
     <url>http://maven.apache.org</url>
 
     <properties>

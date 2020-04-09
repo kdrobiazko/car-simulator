@@ -1,6 +1,6 @@
 package com.simulator.car.parts.door;
 
-import com.simulator.car.parts.door.state.DoorState;
+import com.simulator.car.parts.door.state.DoorsState;
 
 public interface Doors {
 
@@ -8,7 +8,7 @@ public interface Doors {
 
   void unlock();
 
-  void changeState(DoorState state);
+  void changeState(DoorsState state);
 
   State getState();
 

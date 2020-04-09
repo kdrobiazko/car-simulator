@@ -2,7 +2,7 @@ package com.simulator.car.parts.door.state;
 
 import com.simulator.car.parts.door.Doors;
 
-public interface DoorState {
+public interface DoorsState {
 
   void lock();
 

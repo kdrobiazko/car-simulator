@@ -1,6 +1,6 @@
 package com.simulator.car.parts.transmission;
 
-import com.simulator.car.parts.transmission.state.ParkState;
+import com.simulator.car.parts.transmission.state.TransmissionParkState;
 import com.simulator.car.parts.transmission.state.TransmissionState;
 import lombok.extern.slf4j.Slf4j;
 
@@ -9,7 +9,7 @@ public class TransmissionImpl implements Transmission {
   private TransmissionState transmissionState;
 
   public TransmissionImpl() {
-    transmissionState = new ParkState(this);
+    transmissionState = new TransmissionParkState(this);
   }
 
   @Override

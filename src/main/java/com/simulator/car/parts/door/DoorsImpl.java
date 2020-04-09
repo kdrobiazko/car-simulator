@@ -1,16 +1,16 @@
 package com.simulator.car.parts.door;
 
-import com.simulator.car.parts.door.state.DoorState;
-import com.simulator.car.parts.door.state.LockedState;
+import com.simulator.car.parts.door.state.DoorsState;
+import com.simulator.car.parts.door.state.DoorsLockedState;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DoorsImpl implements Doors {
 
-  private DoorState state;
+  private DoorsState state;
 
   public DoorsImpl() {
-    state = new LockedState(this);
+    state = new DoorsLockedState(this);
   }
 
   @Override
@@ -24,7 +24,7 @@ public class DoorsImpl implements Doors {
   }
 
   @Override
-  public void changeState(DoorState newState) {
+  public void changeState(DoorsState newState) {
     log.debug("State is changed from {} to {}", this.state.getState(), newState.getState());
     this.state = newState;
   }

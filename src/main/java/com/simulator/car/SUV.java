@@ -1,6 +1,6 @@
 package com.simulator.car;
 
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 import com.simulator.car.parts.accelerator.Accelerator;
 import com.simulator.car.parts.accelerator.AcceleratorImpl;
 import com.simulator.car.parts.brake.Brake;
@@ -19,7 +19,7 @@ import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class SUV implements CarAPI, Car {
+public class SUV implements CarAPI, CarControls {
 
   @Getter private final Doors doors;
   @Getter private final Engine engine;

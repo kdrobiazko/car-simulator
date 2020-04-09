@@ -1,7 +1,7 @@
 package com.simulator.car.state;
 
 import com.simulator.car.CarAPI;
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 import com.simulator.car.parts.accelerator.Accelerator;
 import com.simulator.car.parts.brake.Brake;
 import com.simulator.car.parts.engine.state.EngineState;
@@ -10,14 +10,14 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public abstract class CarState implements CarAPI {
 
-  private final Car car;
+  private final CarControls carControls;
 
-  public CarState(Car car) {
-    this.car = car;
+  public CarState(CarControls carControls) {
+    this.carControls = carControls;
   }
 
-  protected Car getCar() {
-    return car;
+  protected CarControls getCarControls() {
+    return carControls;
   }
 
   public abstract State getState();
@@ -39,79 +39,84 @@ public abstract class CarState implements CarAPI {
   }
 
   public void pressAccelerator() {
-    car.getAccelerator().press();
+    carControls.getAccelerator().press();
   }
 
   public void releaseAccelerator() {
-    car.getAccelerator().release();
+    carControls.getAccelerator().release();
   }
 
   public void pressBrake() {
-    car.getBrake().press();
+    carControls.getBrake().press();
   }
 
   public void releaseBrake() {
-    car.getBrake().release();
+    carControls.getBrake().release();
   }
 
   @Override
   public void setDrive() {
-    Accelerator.State accState = getCar().getAccelerator().getState();
-    Brake.State brakeState = getCar().getBrake().getState();
-    EngineState.State engineState = getCar().getEngine().getState();
+    Accelerator.State accState = getCarControls().getAccelerator().getState();
+    Brake.State brakeState = getCarControls().getBrake().getState();
+    EngineState.State engineState = getCarControls().getEngine().getState();
 
     if (EngineState.State.STARTED.equals(engineState)
         && Accelerator.State.RELEASED.equals(accState)
         && Brake.State.PRESSED.equals(brakeState)) {
-      getCar().changeState(new DriveForwardState(getCar()));
+      getCarControls().changeState(new DriveForwardState(getCarControls()));
+      getCarControls().getTransmission().drive();
       log.info("Transmission is set to Drive");
     } else {
-      log.warn("To change transmission to Drive, start engine, release accelerator, press brake");
+      log.error("To change transmission to Drive, start engine, release accelerator, press brake");
     }
   }
 
   @Override
   public void setParking() {
-    Accelerator.State accState = getCar().getAccelerator().getState();
-    Brake.State brakeState = getCar().getBrake().getState();
-    EngineState.State engineState = getCar().getEngine().getState();
+    Accelerator.State accState = getCarControls().getAccelerator().getState();
+    Brake.State brakeState = getCarControls().getBrake().getState();
+    EngineState.State engineState = getCarControls().getEngine().getState();
 
     if (EngineState.State.STARTED.equals(engineState)
         && Accelerator.State.RELEASED.equals(accState)
         && Brake.State.PRESSED.equals(brakeState)) {
-      getCar().changeState(new ParkedState(getCar()));
+      getCarControls().changeState(new ParkedState(getCarControls()));
+      getCarControls().getTransmission().park();
       log.info("Transmission is set to Parking");
     } else {
-      log.warn("To change transmission to Parking, start engine, release accelerator, press brake");
+      log.error(
+          "To change transmission to Parking, start engine, release accelerator, press brake");
     }
   }
 
   @Override
   public void setReverse() {
-    Accelerator.State accState = getCar().getAccelerator().getState();
-    Brake.State brakeState = getCar().getBrake().getState();
-    EngineState.State engineState = getCar().getEngine().getState();
+    Accelerator.State accState = getCarControls().getAccelerator().getState();
+    Brake.State brakeState = getCarControls().getBrake().getState();
+    EngineState.State engineState = getCarControls().getEngine().getState();
 
     if (EngineState.State.STARTED.equals(engineState)
         && Accelerator.State.RELEASED.equals(accState)
         && Brake.State.PRESSED.equals(brakeState)) {
-      getCar().changeState(new DriveReverseState(getCar()));
+      getCarControls().changeState(new DriveReverseState(getCarControls()));
+      getCarControls().getTransmission().reverse();
       log.info("Transmission is set to Reverse");
     } else {
-      log.warn("To change transmission to Reverse, start engine, release accelerator, press brake");
+      log.error(
+          "To change transmission to Reverse, start engine, release accelerator, press brake");
     }
   }
 
   public void turnSteeringWheelLeft() {
-    car.getSteeringWheel().left();
+    carControls.getSteeringWheel().left();
   }
 
   public void turnSteeringWheelRight() {
-    car.getSteeringWheel().right();
+    carControls.getSteeringWheel().right();
   }
 
   public void turnSteeringWheelStraight() {
-    car.getSteeringWheel().straight();
+    carControls.getSteeringWheel().straight();
   }
 
   enum State {

@@ -8,8 +8,11 @@ import lombok.extern.slf4j.Slf4j;
 public class App {
   public static void main(String[] args) {
     CarAPI car = new SUV();
+
     car.unlockDoor();
     car.startEngine();
+    car.setDrive();
+    car.pressBrake();
     car.setDrive();
     car.pressAccelerator();
     car.turnSteeringWheelLeft();

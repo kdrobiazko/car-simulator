@@ -4,32 +4,32 @@ import com.simulator.car.parts.transmission.Transmission;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class ParkState implements TransmissionState {
+public class TransmissionDriveState implements TransmissionState {
   private final Transmission transmission;
 
-  public ParkState(Transmission transmission) {
+  public TransmissionDriveState(Transmission transmission) {
     this.transmission = transmission;
   }
 
   @Override
   public void drive() {
-    transmission.changeState(new DriveState(transmission));
-    log.info("Transmission is set to Drive");
+    log.warn("Already in Drive");
   }
 
   @Override
   public void park() {
-    log.warn("Already in Park");
+    transmission.changeState(new TransmissionParkState(transmission));
+    log.info("Transmission is set to Park");
   }
 
   @Override
   public void reverse() {
-    transmission.changeState(new ReverseState(transmission));
+    transmission.changeState(new TransmissionReverseState(transmission));
     log.info("Transmission is set to Reverse");
   }
 
   @Override
   public Transmission.State getState() {
-    return Transmission.State.PARK;
+    return Transmission.State.DRIVE;
   }
 }

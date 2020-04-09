@@ -1,13 +1,13 @@
 package com.simulator.car.state;
 
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 public class DriveReverseState extends DriveState {
 
-  public DriveReverseState(Car car) {
-    super(car);
+  public DriveReverseState(CarControls carControls) {
+    super(carControls);
   }
 
   @Override

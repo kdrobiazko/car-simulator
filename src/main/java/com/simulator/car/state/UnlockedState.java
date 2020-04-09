@@ -1,28 +1,28 @@
 package com.simulator.car.state;
 
-import com.simulator.car.parts.Car;
+import com.simulator.car.parts.CarControls;
 
 public class UnlockedState extends CarState {
 
-  public UnlockedState(Car car) {
-    super(car);
+  public UnlockedState(CarControls carControls) {
+    super(carControls);
   }
 
   @Override
   public void startEngine() {
-    getCar().getEngine().start();
-    getCar().changeState(new ParkedState(getCar()));
+    getCarControls().getEngine().start();
+    getCarControls().changeState(new ParkedState(getCarControls()));
   }
 
   @Override
   public void unlockDoor() {
-    getCar().getDoors().unlock();
+    getCarControls().getDoors().unlock();
   }
 
   @Override
   public void lockDoor() {
-    getCar().getDoors().lock();
-    getCar().changeState(new LockedState(getCar()));
+    getCarControls().getDoors().lock();
+    getCarControls().changeState(new LockedState(getCarControls()));
   }
 
   @Override
